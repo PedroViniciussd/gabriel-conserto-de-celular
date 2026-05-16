@@ -1,9 +1,48 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Gabriel Tech Elite | Assistência Técnica em Celulares em Goiânia - GO',
+  metadataBase: new URL('https://gabriel-conserto-de-celular.vercel.app'),
+
+  title:
+    'Gabriel Tech Elite | Assistência Técnica em Celulares em Goiânia - GO',
+
   description:
     'Assistência técnica em celulares em Goiânia. Troca de tela, bateria, conector de carga, limpeza técnica, reparo básico e diagnóstico completo com atendimento humanizado.',
+
+  openGraph: {
+    title:
+      'Gabriel Tech Elite | Assistência Técnica em Celulares em Goiânia - GO',
+
+    description:
+      'Assistência técnica em celulares em Goiânia. Troca de tela, bateria, conector de carga e diagnóstico completo.',
+
+    url: 'https://gabriel-conserto-de-celular.vercel.app',
+
+    siteName: 'Gabriel Tech Elite',
+
+    images: [
+      {
+        url: '/assets/logo-gabriel-tech-elite.png',
+        width: 1200,
+        height: 630,
+        alt: 'Gabriel Tech Elite',
+      },
+    ],
+
+    locale: 'pt_BR',
+    type: 'website',
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+
+    title: 'Gabriel Tech Elite',
+
+    description:
+      'Assistência técnica em celulares em Goiânia - GO.',
+
+    images: ['/assets/logo-gabriel-tech-elite.png'],
+  },
 };
 
 export default function RootLayout({ children }) {
