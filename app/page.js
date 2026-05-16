@@ -425,10 +425,32 @@ export default function Home() {
   </div>
 </section>
 
-      <footer className="border-t border-white/10 px-4 py-8 text-center text-sm text-slate-400 md:px-6">
-        <p>Gabriel Tech Elite — Assistência técnica em celulares em Goiânia - GO.</p>
-        <p className="mt-2">Qualidade que conecta, confiança que fica.</p>
-      </footer>
+<footer className="border-t border-white/10 px-4 py-8 text-center text-sm text-slate-400 md:px-6">
+  <p>
+    Gabriel Tech Elite — Assistência técnica em celulares em Goiânia - GO.
+  </p>
+
+  <p className="mt-2">
+    Qualidade que conecta, confiança que fica.
+  </p>
+
+  <p className="mt-4 text-slate-500">
+    Desenvolvido por:{' '}
+    
+    <a
+      href="https://kinkajoudev.com.br"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="
+        font-bold text-eliteCyan
+        transition duration-300
+        hover:text-white
+      "
+    >
+      Kinkajou Dev
+    </a>
+  </p>
+</footer>
       <a
   href={whatsapp}
   target="_blank"
