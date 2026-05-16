@@ -227,7 +227,7 @@ export default function Home() {
 
       <section
   id="goiania"
-  className="relative overflow-hidden bg-slate-950 px-4 py-24 md:px-6"
+  className="relative overflow-hidden bg-slate-950 px-4 md:py-24 md:px-6"
 >
   {/* Glow background */}
   <div className="absolute left-1/2 top-0 h-[400px] w-[400px] -translate-x-1/2 rounded-full bg-eliteBlue/20 blur-3xl" />
@@ -429,6 +429,25 @@ export default function Home() {
         <p>Gabriel Tech Elite — Assistência técnica em celulares em Goiânia - GO.</p>
         <p className="mt-2">Qualidade que conecta, confiança que fica.</p>
       </footer>
+      <a
+  href={whatsapp}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Falar com Gabriel Tech Elite pelo WhatsApp"
+  className="
+    fixed bottom-5 right-5 z-[999]
+    flex h-14 w-14 items-center justify-center
+    rounded-full
+    bg-gradient-to-br from-emerald-500 to-green-400
+    text-white
+    shadow-[0_0_30px_rgba(34,197,94,0.45)]
+    transition-all duration-300
+    hover:-translate-y-1 hover:scale-110
+    md:bottom-8 md:right-8 md:h-16 md:w-16
+  "
+>
+  <FaWhatsapp className="text-[1.8rem] md:text-[2rem]" />
+</a>
     </main>
   );
 }
