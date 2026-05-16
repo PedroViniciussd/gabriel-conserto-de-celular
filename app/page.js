@@ -52,7 +52,7 @@ export default function Home() {
       <img
         src="/assets/logo-gabriel-tech-elite.png"
         alt="Logo Gabriel Tech Elite"
-        className="h-12 w-auto object-contain"
+        className="h-20 w-auto object-contain"
       />
     </a>
 
