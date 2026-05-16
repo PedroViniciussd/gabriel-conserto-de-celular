@@ -22,7 +22,7 @@ export const metadata = {
 
     images: [
       {
-        url: '/assets/logo-gabriel-tech-elite.png',
+        url: '/assets/logo-gabriel-tech-elite1.png',
         width: 1200,
         height: 630,
         alt: 'Gabriel Tech Elite',
