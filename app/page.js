@@ -392,7 +392,7 @@ export default function Home() {
   </div>
 </section>
 
-<section className="relative overflow-hidden px-4 pb-24 md:px-6 md:py-24">
+<section className="relative overflow-hidden px-4 pb-24 md:px-6 py-24">
   <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(0,212,255,0.14),transparent_35%)]" />
 
   <div className="mx-auto max-w-5xl overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-br from-[#07111f] via-slate-950 to-[#020617] p-8 shadow-[0_25px_80px_rgba(0,0,0,0.35)] md:p-14">
