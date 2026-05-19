@@ -1,4 +1,6 @@
 import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
+import FeaturedProductsCarousel from './components/FeaturedProductsCarousel';
+import Reveal from './components/Reveal';
 
 const whatsapp = 'https://wa.me/5562998800465?text=Ol%C3%A1%2C%20Gabriel%21%20Vim%20pelo%20site%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento.';
 
@@ -17,6 +19,7 @@ const faq = [
   ['Faz troca de tela e bateria?', 'Sim. Troca de tela, bateria, conector de carga, limpeza técnica e diagnóstico completo.'],
   ['Atende aparelhos de todo o Brasil?', 'Sim. O atendimento pode ser feito para clientes de todo o Brasil, combinando o envio pelo WhatsApp.'],
 ];
+
 
 export default function Home() {
   const jsonLd = {
@@ -45,18 +48,20 @@ export default function Home() {
   <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6">
     
     <a
-      href="#inicio"
+      href="/"
       className="flex items-center gap-3"
       aria-label="Gabriel Tech Elite"
     >
       <img
         src="/assets/logo-gabriel-tech-elite.png"
         alt="Logo Gabriel Tech Elite"
-        className="h-20 w-auto object-contain"
+        className="h-14 w-auto object-contain"
       />
     </a>
 
     <div className="hidden items-center gap-7 text-sm text-slate-300 md:flex">
+
+                  <a href="/" className="transition hover:text-eliteCyan">Início</a>
       <a
         href="#servicos"
         className="transition hover:text-eliteCyan"
@@ -76,6 +81,13 @@ export default function Home() {
         className="transition hover:text-eliteCyan"
       >
         Dúvidas
+      </a>
+
+      <a
+        href="/produtos"
+        className="transition hover:text-eliteCyan"
+      >
+        Produtos
       </a>
     </div>
 
@@ -167,6 +179,8 @@ export default function Home() {
         </div>
       </section>
 
+      <Reveal>
+
 <section id="servicos" className="relative overflow-hidden px-4 py-24 md:px-6">
   <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(0,140,255,0.16),transparent_35%)]" />
 
@@ -225,9 +239,11 @@ export default function Home() {
   </div>
 </section>
 
+</Reveal>
+<Reveal>
       <section
   id="goiania"
-  className="relative overflow-hidden bg-slate-950 px-4 md:py-24 md:px-6"
+  className="relative overflow-hidden bg-slate-950 px-4 md:px-6"
 >
   {/* Glow background */}
   <div className="absolute left-1/2 top-0 h-[400px] w-[400px] -translate-x-1/2 rounded-full bg-eliteBlue/20 blur-3xl" />
@@ -322,6 +338,8 @@ export default function Home() {
   </div>
 </section>
 
+</Reveal>
+<Reveal>
 <section id="faq" className="relative overflow-hidden px-4 py-24 md:px-6">
   <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_bottom_left,rgba(0,212,255,0.12),transparent_35%)]" />
 
@@ -391,7 +409,13 @@ export default function Home() {
     </div>
   </div>
 </section>
+</Reveal>
 
+<Reveal>
+<FeaturedProductsCarousel />
+</Reveal>
+
+<Reveal>
 <section className="relative overflow-hidden px-4 pb-24 md:px-6 py-24">
   <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(0,212,255,0.14),transparent_35%)]" />
 
@@ -424,6 +448,7 @@ export default function Home() {
     </div>
   </div>
 </section>
+</Reveal>
 
 <footer className="border-t border-white/10 px-4 py-8 text-center text-sm text-slate-400 md:px-6">
   <p>
