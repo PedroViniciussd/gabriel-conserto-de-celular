@@ -738,8 +738,17 @@ function getProduct(slug) {
   return products.find((product) => product.slug === slug);
 }
 
-function productWhatsapp(productName) {
-  return `https://wa.me/${phone}?text=${encodeURIComponent(`Olá, gostaria de adquirir esse produto: ${productName}`)}`;
+function productWhatsapp(product) {
+  const productUrl = `${siteUrl}/produtos/${product.slug}`;
+
+  const message = `
+Olá, gostaria de adquirir esse produto: ${product.name}
+
+Link do produto:
+${productUrl}
+  `;
+
+  return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 }
 
 export function generateStaticParams() {
@@ -851,7 +860,7 @@ export default async function ProdutoDetalhePage({ params }) {
           </div>
 
           <div className="flex items-center gap-3">
-            <a href={productWhatsapp(product.name)} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Gabriel Tech Elite" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-gradient-to-br from-emerald-500 to-green-400 text-white shadow-[0_0_25px_rgba(34,197,94,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-110">
+            <a href={productWhatsapp(product)} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Gabriel Tech Elite" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-gradient-to-br from-emerald-500 to-green-400 text-white shadow-[0_0_25px_rgba(34,197,94,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-110">
               <FaWhatsapp className="text-[1.35rem]" />
             </a>
             <a href="https://www.instagram.com/gabrieltechelite" target="_blank" rel="noopener noreferrer" aria-label="Instagram Gabriel Tech Elite" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-gradient-to-br from-pink-500 via-red-500 to-yellow-400 text-white shadow-[0_0_25px_rgba(236,72,153,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-110">
@@ -888,7 +897,7 @@ export default async function ProdutoDetalhePage({ params }) {
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a href={productWhatsapp(product.name)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-500 to-green-400 px-7 py-4 text-center font-black text-white shadow-[0_0_30px_rgba(34,197,94,0.35)] transition hover:-translate-y-1">
+              <a href={productWhatsapp(product)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-500 to-green-400 px-7 py-4 text-center font-black text-white shadow-[0_0_30px_rgba(34,197,94,0.35)] transition hover:-translate-y-1">
                 Comprar pelo WhatsApp
               </a>
 
@@ -911,7 +920,7 @@ export default async function ProdutoDetalhePage({ params }) {
           <span className="inline-flex rounded-full border border-eliteCyan/20 bg-eliteCyan/10 px-5 py-2 text-sm font-bold uppercase tracking-[.2em] text-eliteCyan">Atendimento rápido</span>
           <h2 className="mt-6 text-3xl font-black leading-tight md:text-5xl">Quer adquirir este produto?</h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-300">Clique no botão abaixo e envie automaticamente o nome do produto correto para o WhatsApp.</p>
-          <a href={productWhatsapp(product.name)} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex rounded-2xl bg-white px-8 py-4 font-black text-slate-950 transition hover:-translate-y-1">
+          <a href={productWhatsapp(product)} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex rounded-2xl bg-white px-8 py-4 font-black text-slate-950 transition hover:-translate-y-1">
             Falar no WhatsApp
           </a>
         </div>
@@ -923,7 +932,7 @@ export default async function ProdutoDetalhePage({ params }) {
         <p className="mt-4 text-slate-500">Desenvolvido por: <a href="https://kinkajoudev.com.br" target="_blank" rel="noopener noreferrer" className="font-bold text-eliteCyan transition duration-300 hover:text-white">Kinkajou Dev</a></p>
       </footer>
 
-      <a href={productWhatsapp(product.name)} target="_blank" rel="noopener noreferrer" aria-label="Falar com Gabriel Tech Elite pelo WhatsApp" className="fixed bottom-5 right-5 z-[999] flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-green-400 text-white shadow-[0_0_30px_rgba(34,197,94,0.45)] transition-all duration-300 hover:-translate-y-1 hover:scale-110 md:bottom-8 md:right-8 md:h-16 md:w-16">
+      <a href={productWhatsapp(product)} target="_blank" rel="noopener noreferrer" aria-label="Falar com Gabriel Tech Elite pelo WhatsApp" className="fixed bottom-5 right-5 z-[999] flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-green-400 text-white shadow-[0_0_30px_rgba(34,197,94,0.45)] transition-all duration-300 hover:-translate-y-1 hover:scale-110 md:bottom-8 md:right-8 md:h-16 md:w-16">
         <FaWhatsapp className="text-[1.8rem] md:text-[2rem]" />
       </a>
     </main>
