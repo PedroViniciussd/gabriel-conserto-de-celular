@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
+import Header from '../components/Header';
 
 const whatsapp =
   'https://wa.me/5562998800465?text=Ol%C3%A1%2C%20Gabriel%21%20Vim%20pelo%20site%20e%20gostaria%20de%20ver%20os%20produtos.';
@@ -763,105 +764,7 @@ const filteredProducts = useMemo(() => {
   return (
     <main className="min-h-screen bg-eliteDark px-4 py-32 text-white">
 
-          <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6">
-        
-        <a
-          href="/"
-          className="flex items-center gap-3"
-          aria-label="Gabriel Tech Elite"
-        >
-          <img
-            src="/assets/logo-gabriel-tech-elite.png"
-            alt="Logo Gabriel Tech Elite"
-            className="h-14 w-auto object-contain"
-          />
-        </a>
-    
-        <div className="hidden items-center gap-7 text-sm text-slate-300 md:flex">
-
-          <a href="/" className="transition hover:text-eliteCyan">Início</a>
-
-          <a
-            href="#servicos"
-            className="transition hover:text-eliteCyan"
-          >
-            Serviços
-          </a>
-    
-          <a
-            href="#goiania"
-            className="transition hover:text-eliteCyan"
-          >
-            Goiânia
-          </a>
-    
-          <a
-            href="#faq"
-            className="transition hover:text-eliteCyan"
-          >
-            Dúvidas
-          </a>
-    
-          <a
-            href="/produtos"
-            className="transition hover:text-eliteCyan"
-          >
-            Produtos
-          </a>
-        </div>
-    
-        <div className="flex items-center gap-3">
-    
-      {/* WhatsApp */}
-      <a
-        href={whatsapp}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="WhatsApp Gabriel Tech Elite"
-        className="
-          group
-          flex h-11 w-11 items-center justify-center
-          rounded-full
-          border border-white/10
-          bg-gradient-to-br from-emerald-500 to-green-400
-          text-white
-          shadow-[0_0_25px_rgba(34,197,94,0.35)]
-          transition-all duration-300
-          hover:-translate-y-1
-          hover:scale-110
-          hover:shadow-[0_0_40px_rgba(34,197,94,0.5)]
-        "
-      >
-        <FaWhatsapp className="text-[1.35rem]" />
-      </a>
-    
-      {/* Instagram */}
-      <a
-        href="https://www.instagram.com/gabrieltechelite"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Instagram Gabriel Tech Elite"
-        className="
-          group
-          flex h-11 w-11 items-center justify-center
-          rounded-full
-          border border-white/10
-          bg-gradient-to-br from-pink-500 via-red-500 to-yellow-400
-          text-white
-          shadow-[0_0_25px_rgba(236,72,153,0.35)]
-          transition-all duration-300
-          hover:-translate-y-1
-          hover:scale-110
-          hover:shadow-[0_0_40px_rgba(236,72,153,0.45)]
-        "
-      >
-        <FaInstagram className="text-[1.2rem]" />
-      </a>
-    
-    </div>
-      </nav>
-    </header>
+<Header whatsapp={whatsapp} />
 
       <div className="mx-auto max-w-7xl">
         <div className="mb-14 text-center">

@@ -1,4 +1,5 @@
 import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
+import Header from '../../components/Header';
 
 const phone = '5562998800465';
 const siteUrl = 'https://gabriel-conserto-de-celular.vercel.app';
@@ -757,6 +758,14 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const product = getProduct(slug);
+  
+  const relatedProducts = products
+  .filter(
+    (item) =>
+      item.category === product.category &&
+      item.slug !== product.slug
+  )
+  .slice(0, 4);
 
   if (!product) {
     return {
@@ -810,7 +819,13 @@ export default async function ProdutoDetalhePage({ params }) {
       </main>
     );
   }
-
+const relatedProducts = products
+  .filter(
+    (item) =>
+      item.category === product.category &&
+      item.slug !== product.slug
+  )
+  .slice(0, 4);
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -846,92 +861,192 @@ export default async function ProdutoDetalhePage({ params }) {
     <main className="min-h-screen overflow-hidden bg-eliteDark text-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6">
-          <a href="/" className="flex items-center gap-3" aria-label="Gabriel Tech Elite">
-            <img src="/assets/logo-gabriel-tech-elite.png" alt="Logo Gabriel Tech Elite" className="h-14 w-auto object-contain" />
-          </a>
+<Header whatsapp={productWhatsapp(product)} />
 
-          <div className="hidden items-center gap-7 text-sm text-slate-300 md:flex">
-            <a href="/" className="transition hover:text-eliteCyan">Início</a>
-            <a href="/#servicos" className="transition hover:text-eliteCyan">Serviços</a>
-            
+  <section className="relative px-4 pb-20 pt-36 md:px-6 md:pt-44">
+  <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(0,140,255,0.18),transparent_38%)]" />
+
+  <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
+    
+    {/* Título e informações principais */}
+    <div className="order-1 lg:order-2">
       <a
-        href="#goiania"
-        className="transition hover:text-eliteCyan"
+        href="/produtos"
+        className="mb-5 inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-bold text-slate-300 transition hover:text-eliteCyan mr-5"
       >
-        Goiânia
+        ← Voltar para produtos
       </a>
-            <a href="/#faq" className="transition hover:text-eliteCyan">Dúvidas</a>
-              <a href="/produtos" className="text-eliteCyan transition hover:text-white">Produtos</a>
-          </div>
 
-          <div className="flex items-center gap-3">
-            <a href={productWhatsapp(product)} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Gabriel Tech Elite" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-gradient-to-br from-emerald-500 to-green-400 text-white shadow-[0_0_25px_rgba(34,197,94,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-110">
-              <FaWhatsapp className="text-[1.35rem]" />
-            </a>
-            <a href="https://www.instagram.com/gabrieltechelite" target="_blank" rel="noopener noreferrer" aria-label="Instagram Gabriel Tech Elite" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-gradient-to-br from-pink-500 via-red-500 to-yellow-400 text-white shadow-[0_0_25px_rgba(236,72,153,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-110">
-              <FaInstagram className="text-[1.2rem]" />
-            </a>
-          </div>
-        </nav>
-      </header>
+      <p className="mb-4 inline-flex rounded-full border border-eliteBlue/40 bg-eliteBlue/10 px-4 py-2 text-sm font-semibold text-eliteCyan">
+        {product.category} em Goiânia - GO
+      </p>
 
-      <section className="relative px-4 pb-20 pt-36 md:px-6 md:pt-44">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(0,140,255,0.18),transparent_38%)]" />
+      <h1 className="max-w-4xl text-4xl font-black leading-tight md:text-4xl">
+        {product.name}
+      </h1>
 
-        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="relative order-2 lg:order-1">
-            <div className="absolute -inset-6 rounded-[40px] bg-eliteBlue/20 blur-3xl" />
-            <div className="relative overflow-hidden rounded-[34px] border border-eliteBlue/30 bg-slate-950 p-3 shadow-glow">
-              <img src={product.image} alt={`${product.name} em Goiânia - Gabriel Tech Elite`} className="aspect-[4/3] w-full rounded-[26px] object-cover" />
-            </div>
-          </div>
+      {/* Desktop */}
+      <div className="mt-6 hidden lg:block">
+        <p className="max-w-2xl text-lg leading-8 text-slate-300">
+          {product.description}
+        </p>
 
-          <div className="order-1 lg:order-2">
-            <a href="/produtos" className="mb-5 inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-bold text-slate-300 transition hover:text-eliteCyan">← Voltar para produtos</a>
+        <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+          <a
+            href={productWhatsapp(product)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-500 to-green-400 px-7 py-4 text-center font-black text-white shadow-[0_0_30px_rgba(34,197,94,0.35)] transition hover:-translate-y-1"
+          >
+            Comprar pelo WhatsApp
+          </a>
 
-            <p className="mb-4 inline-flex rounded-full border border-eliteBlue/40 bg-eliteBlue/10 px-4 py-2 text-sm font-semibold text-eliteCyan">
-              {product.category} em Goiânia - GO
-            </p>
-
-            <h1 className="max-w-4xl text-4xl font-black leading-tight md:text-6xl">
-              {product.name}
-            </h1>
-
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-              {product.description}
-            </p>
-
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a href={productWhatsapp(product)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-500 to-green-400 px-7 py-4 text-center font-black text-white shadow-[0_0_30px_rgba(34,197,94,0.35)] transition hover:-translate-y-1">
-                Comprar pelo WhatsApp
-              </a>
-
-              <a href="/produtos" className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-7 py-4 text-center font-bold text-white transition hover:bg-white/10">
-                Ver outros produtos
-              </a>
-            </div>
-
-            <div className="mt-8 grid max-w-2xl grid-cols-1 gap-3 text-sm text-slate-300 sm:grid-cols-3">
-              {['Atendimento direto', 'Consulte compatibilidade', 'Goiânia - GO'].map((item) => (
-                <span key={item} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-center">{item}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="relative overflow-hidden bg-slate-950 px-4 py-20 md:px-6">
-        <div className="mx-auto max-w-5xl rounded-[36px] border border-white/10 bg-gradient-to-br from-[#07111f] via-slate-950 to-[#020617] p-8 text-center shadow-[0_25px_80px_rgba(0,0,0,0.35)] md:p-14">
-          <span className="inline-flex rounded-full border border-eliteCyan/20 bg-eliteCyan/10 px-5 py-2 text-sm font-bold uppercase tracking-[.2em] text-eliteCyan">Atendimento rápido</span>
-          <h2 className="mt-6 text-3xl font-black leading-tight md:text-5xl">Quer adquirir este produto?</h2>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-300">Clique no botão abaixo e envie automaticamente o nome do produto correto para o WhatsApp.</p>
-          <a href={productWhatsapp(product)} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex rounded-2xl bg-white px-8 py-4 font-black text-slate-950 transition hover:-translate-y-1">
-            Falar no WhatsApp
+          <a
+            href="/produtos"
+            className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-7 py-4 text-center font-bold text-white transition hover:bg-white/10"
+          >
+            Ver outros produtos
           </a>
         </div>
-      </section>
+
+        <div className="mt-8 grid max-w-2xl grid-cols-1 gap-3 text-sm text-slate-300 sm:grid-cols-3">
+          {['Atendimento direto', 'Consulte compatibilidade', 'Goiânia - GO'].map((item) => (
+            <span
+              key={item}
+              className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-center"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    {/* Imagem */}
+    <div className="relative order-2 lg:order-1">
+      <div className="absolute -inset-6 rounded-[40px] bg-eliteBlue/20 blur-3xl" />
+
+      <div className="relative overflow-hidden rounded-[34px] border border-eliteBlue/30 bg-slate-950 p-3 shadow-glow">
+        <img
+          src={product.image}
+          alt={`${product.name} em Goiânia - Gabriel Tech Elite`}
+          className="aspect-[4/3] w-full rounded-[26px] object-cover"
+        />
+      </div>
+    </div>
+
+    {/* Mobile */}
+    <div className="order-3 lg:hidden">
+      <p className="text-lg leading-8 text-slate-300">
+        {product.description}
+      </p>
+
+      <div className="mt-8 flex flex-col gap-4">
+        <a
+          href={productWhatsapp(product)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-500 to-green-400 px-7 py-4 text-center font-black text-white shadow-[0_0_30px_rgba(34,197,94,0.35)] transition hover:-translate-y-1"
+        >
+          Comprar pelo WhatsApp
+        </a>
+
+        <a
+          href="/produtos"
+          className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-7 py-4 text-center font-bold text-white transition hover:bg-white/10"
+        >
+          Ver outros produtos
+        </a>
+      </div>
+
+      <div className="mt-8 grid grid-cols-1 gap-3 text-sm text-slate-300">
+        {['Atendimento direto', 'Consulte compatibilidade', 'Goiânia - GO'].map((item) => (
+          <span
+            key={item}
+            className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-center"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+     {relatedProducts.length > 0 && (
+  <section className="relative overflow-hidden bg-slate-950 px-4 py-20 md:px-6">
+    <div className="mx-auto max-w-7xl">
+      <div className="mb-10 text-center">
+        <span className="inline-flex rounded-full border border-eliteCyan/20 bg-eliteCyan/10 px-5 py-2 text-sm font-bold uppercase tracking-[.2em] text-eliteCyan">
+          Produtos relacionados
+        </span>
+
+        <h2 className="mt-6 text-3xl font-black leading-tight md:text-4xl">
+          Veja outros produtos da categoria {product.category}
+        </h2>
+
+        <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-300">
+          Confira produtos semelhantes disponíveis na Gabriel Tech Elite.
+        </p>
+      </div>
+
+<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+  {relatedProducts.map((item) => (
+    <a
+      key={item.slug}
+      href={`/produtos/${item.slug}`}
+      className="group overflow-hidden rounded-[30px] border border-white/10 bg-white/5 transition hover:-translate-y-2 hover:border-eliteBlue/60 hover:shadow-glow"
+    >
+      <div className="overflow-hidden">
+        <img
+          src={item.image}
+          alt={`${item.name} - Gabriel Tech Elite`}
+          className="aspect-square w-full object-cover transition duration-500 group-hover:scale-105"
+        />
+      </div>
+
+      <div className="p-5">
+        <h3 className="mt-4 text-xl font-black text-white">
+          {item.name}
+        </h3>
+
+        <p className="mt-3 text-sm leading-7 text-slate-300">
+          {item.shortDescription}
+        </p>
+
+        <p className="mt-5 font-bold text-eliteCyan">
+          Ver produto →
+        </p>
+      </div>
+    </a>
+  ))}
+</div>
+
+<div className="mt-12 flex justify-center">
+  <a
+    className="
+      inline-flex items-center justify-center
+      rounded-2xl
+      bg-gradient-to-r from-eliteBlue via-sky-500 to-eliteCyan
+      px-7 py-5
+      text-lg font-black text-white
+      shadow-[0_0_30px_rgba(0,140,255,0.35)]
+      border border-white/10
+      backdrop-blur-sm
+      transition-all duration-300
+      hover:-translate-y-1
+      hover:scale-[1.02]
+      hover:shadow-[0_0_45px_rgba(0,212,255,0.45)]
+      hover:from-eliteCyan hover:to-eliteBlue
+    "
+    href="/produtos"
+  >
+    Ver todos os produtos
+  </a>
+</div>
+    </div>
+  </section>
+)}
 
       <footer className="border-t border-white/10 px-4 py-8 text-center text-sm text-slate-400 md:px-6">
         <p>Gabriel Tech Elite — Produtos e assistência técnica em celulares em Goiânia - GO.</p>
