@@ -9,6 +9,12 @@ export const metadata = {
   description:
     'Assistência técnica em celulares em Goiânia. Troca de tela, bateria, conector de carga, limpeza técnica, reparo básico e diagnóstico completo com atendimento humanizado.',
 
+     icons: {
+      icon: '/favicon.ico',
+      shortcut: '/favicon.ico',
+      apple: '/favicon.ico',
+    },
+
   openGraph: {
     title:
       'Gabriel Tech Elite | Assistência Técnica em Celulares em Goiânia - GO',
@@ -16,9 +22,11 @@ export const metadata = {
     description:
       'Assistência técnica em celulares em Goiânia. Troca de tela, bateria, conector de carga e diagnóstico completo.',
 
-    url: 'https://gabriel-conserto-de-celular.vercel.app',
+    url: 'https://gabrieltechelite.vercel.app/',
 
     siteName: 'Gabriel Tech Elite',
+
+
 
     images: [
       {
