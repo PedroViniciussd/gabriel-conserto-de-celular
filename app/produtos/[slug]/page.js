@@ -2,7 +2,7 @@ import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
 import Header from '../../components/Header';
 
 const phone = '5562998800465';
-const siteUrl = 'https://gabriel-conserto-de-celular.vercel.app';
+const siteUrl = 'https://gabrieltechelite.vercel.app/';
 
 const products = [
   {

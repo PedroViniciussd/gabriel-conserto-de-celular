@@ -1,7 +1,7 @@
 import './globals.css';
 
 export const metadata = {
-  metadataBase: new URL('https://gabriel-conserto-de-celular.vercel.app'),
+  metadataBase: new URL('https://gabrieltechelite.vercel.app/'),
 
   title:
     'Gabriel Tech Elite | Assistência Técnica em Celulares em Goiânia - GO',
