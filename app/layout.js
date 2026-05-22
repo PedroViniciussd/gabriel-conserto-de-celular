@@ -50,6 +50,7 @@ export default function RootLayout({ children }) {
     <html lang="pt-BR">
       <head>
         <meta name="theme-color" content="#020617" />
+        <meta name="google-site-verification" content="zC8WgvMPr6KvjEbYryUlA_ybKILeoDOUsAc6e_hXkLQ" />
 
         <script
           dangerouslySetInnerHTML={{
